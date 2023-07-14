@@ -1,0 +1,29 @@
+
+spring:
+  datasource:
+
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/chat_hub?serverTimezone=UTC
+      username: root
+      password: 123456789xsz
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    static-path-pattern:
+    async:
+      request-timeout: 30000
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.chatHub.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+
+app:
+  jwt:
+    secret: your-secret-key-xiangshizhen
+    expiration: 3600000

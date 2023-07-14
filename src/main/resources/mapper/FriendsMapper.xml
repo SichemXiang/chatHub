@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chatHub.mapper.FriendsMapper">
+    <insert id="createFriendship">
+        INSERT INTO friendships (user_name_1, user_name_2, status)
+        VALUES (#{userName1}, #{userName2}, 0)
+    </insert>
+
+    <update id="acceptFriendship">
+        UPDATE friendships SET status = 1 WHERE user_name_1 = #{userName1} AND user_name_2 = #{userName2}
+    </update>
+
+    <update id="declineFriendship">
+        UPDATE friendships SET status = 2 WHERE user_name_1 = #{userName1} AND user_name_2 = #{userName2}
+    </update>
+
+    <select id="searchFriends" resultType="com.chatHub.entity.User">
+        select * from users where user_name like concat('%',#{searchKeyword},'%')
+    </select>
+
+</mapper>
